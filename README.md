@@ -10,7 +10,9 @@ Welcome to our project on Authentication with MVC PHP and MySQL Database. This p
 ## Importing the Database
 
 - Create a new MySQL database.
-- Import the `users.sql` file located in the `resources` directory to set up the database structure with sample data.
+- Import the `users.sql` file located in the `/resources` directory to set up the database structure with sample data.
+-  admin account "admin@test.com"
+-  user account "user@gmail.com"
 
 ## Installing Dependencies
 
@@ -25,7 +27,7 @@ This will load the required files and dependencies, including AltoRouter specifi
 
 ## Starting the Project
 
-- Navigate to the `public/` directory using the following command:
+- Navigate to the `/public` directory using the following command:
 
 ```bash
 cd public/
