@@ -46,5 +46,3 @@ This will start the project, and you can access it by opening a browser and visi
 Feel free to explore the code to understand the application's structure and functionality.
 
 ---
-
-Don't forget to check the project's license for usage and distribution terms.
