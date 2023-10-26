@@ -10,7 +10,9 @@ Welcome to our project on Authentication with MVC PHP and MySQL Database. This p
 ## Importing the Database
 
 - Create a new MySQL database.
-- Import the `users.sql` file located in the `resources` directory to set up the database structure with sample data.
+- Import the `users.sql` file located in the `/database` directory to set up the database structure with sample data.
+-  admin account "admin@test.com"
+-  user account "user@gmail.com"
 
 ## Installing Dependencies
 
@@ -18,22 +20,25 @@ Make sure you have Composer installed on your system, then execute the following
 
 ```bash
 composer install
+```
 
 
 This will load the required files and dependencies, including AltoRouter specified in the `composer.json` file.
 
 ## Starting the Project
 
-- Navigate to the `public/` directory using the following command:
+- Navigate to the `/public` directory using the following command:
 
 ```bash
 cd public/
+```
 
 
 - Run a local PHP server using the following command:
 
 ```bash
 php -S localhost:8000
+```
 
 
 This will start the project, and you can access it by opening a browser and visiting the URL `http://localhost:8000`.
