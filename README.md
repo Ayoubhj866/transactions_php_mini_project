@@ -18,6 +18,7 @@ Make sure you have Composer installed on your system, then execute the following
 
 ```bash
 composer install
+```
 
 
 This will load the required files and dependencies, including AltoRouter specified in the `composer.json` file.
@@ -28,12 +29,14 @@ This will load the required files and dependencies, including AltoRouter specifi
 
 ```bash
 cd public/
+```
 
 
 - Run a local PHP server using the following command:
 
 ```bash
 php -S localhost:8000
+```
 
 
 This will start the project, and you can access it by opening a browser and visiting the URL `http://localhost:8000`.
