@@ -11,8 +11,8 @@ Welcome to our project on Authentication with MVC PHP and MySQL Database. This p
 
 - Create a new MySQL database.
 - Import the `users.sql` file located in the `/database` directory to set up the database structure with sample data.
--  admin account "admin@test.com"
--  user account "user@gmail.com"
+-  admin account "admin@test.com" --- password "123456"
+-  user account "user@gmail.com"  --- password "123456"
 
 ## Installing Dependencies
 
