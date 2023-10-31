@@ -28,7 +28,7 @@ $i = 0;
         <tbody class="table-group-divider">
             <?php if ($data && count($data) > 0) : ?>
 
-                <?php foreach ($data as $transaction) : ?>
+                <?php foreach (array_reverse($data) as $transaction) : ?>
                     <tr class="table-light">
                         <td class="fw-bold" scope="row">
                             <?= ++$i ?>

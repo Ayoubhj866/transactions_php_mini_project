@@ -9,12 +9,23 @@ use App\Models\Transaction;
 class TransactionController
 {
 
-    public function index()
+    /**
+     * Get the transactions page
+     *
+     * @return void
+     */
+    public function index() : View
     {
         //get all transaction
         $transaction = (new Transaction) -> readAll() ;
         
         return View::make("transactions/index" , $transaction)  ;
+    }
+
+    public function create() : View
+    {
+       
+        return View::make("transactions/create" , []) ;
     }
 
 }

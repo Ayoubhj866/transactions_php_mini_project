@@ -39,7 +39,7 @@
 
                         <li>
                             <a href="/transactions" class="nav-link text-secondary link-active">
-                                <i class="ph-bold ph-user"></i>
+                                <i class="ph-bold ph-hand-coins"></i>
                                 Transactions
                             </a>
                         </li>

@@ -30,6 +30,7 @@ $router -> map("GET" , "/users" , [UserController::class , "index" , true] , "us
 
 //transactions routes
 $router -> map('GET' , "/transactions" , [TransactionController::class , "index" , true] , "transactionsPage");
+$router -> map('GET' , "/transactions/create" , [TransactionController::class , "create" , true] , "createTransaction");
 
 //! POST Routes
 
