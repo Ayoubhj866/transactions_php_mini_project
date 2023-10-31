@@ -2,6 +2,7 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\TransactionController;
 use App\Controllers\UserController;
 
 require "../vendor/autoload.php";
@@ -27,6 +28,8 @@ $router->map("GET", "/", [HomeController::class, "index" , true], "homePage");
 //users routes
 $router -> map("GET" , "/users" , [UserController::class , "index" , true] , "usersPage") ;
 
+//transactions routes
+$router -> map('GET' , "/transactions" , [TransactionController::class , "index" , true] , "transactionsPage");
 
 //! POST Routes
 

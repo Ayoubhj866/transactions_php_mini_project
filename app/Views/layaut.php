@@ -38,11 +38,19 @@
                         </li>
 
                         <li>
+                            <a href="/transactions" class="nav-link text-secondary link-active">
+                                <i class="ph-bold ph-user"></i>
+                                Transactions
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="/users" class="nav-link text-secondary">
                                 <i class="ph-bold ph-user"></i>
                                 Users
                             </a>
                         </li>
+
                     </ul>
 
                 </div>

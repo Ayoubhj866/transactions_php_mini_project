@@ -1,6 +1,7 @@
 <?php
 
 use App\Core\App;
+use App\Models\Transaction;
 use App\Models\User;
 
 require "../app/Core/Config.php";

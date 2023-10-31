@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 26 oct. 2023 à 23:21
+-- Généré le : mar. 31 oct. 2023 à 18:16
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -18,8 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `auth`
+-- Base de données : `transactions`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id_transaction` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `transaction_check` int(11) NOT NULL,
+  `amount` double NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `transactions`
+--
+
+INSERT INTO `transactions` (`id_transaction`, `date`, `transaction_check`, `amount`, `description`) VALUES
+(1, '2023-10-31', 45868, 105, 'Transaction test');
 
 -- --------------------------------------------------------
 
@@ -50,6 +71,12 @@ INSERT INTO `users` (`id_user`, `username`, `email`, `role`, `password`, `status
 --
 
 --
+-- Index pour la table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id_transaction`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -58,6 +85,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `users`
