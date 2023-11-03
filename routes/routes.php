@@ -37,3 +37,6 @@ $router -> map('GET' , "/transactions/create" , [TransactionController::class , 
 //auth post routes
 $router -> map("POST" , "/login" , [AuthController::class , "login" , true] , "login") ;
 $router -> map("POST" , "/register" , [AuthController::class , "register" , true] , "register") ;
+
+//transactions
+$router -> map("POST" , "/transactions/create" , [TransactionController::class , "store"  , true ] , "createTransactions") ;

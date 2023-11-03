@@ -149,4 +149,5 @@ class Validation
         }
         return "Please ensure that your password is at least 6 characters long ";
     }
+
 }

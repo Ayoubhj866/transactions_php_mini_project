@@ -1,5 +1,6 @@
-<?php 
-namespace App\Models ;
+<?php
+
+namespace App\Models;
 
 use App\Abstracts\Crud;
 use App\Core\Database;
@@ -8,17 +9,17 @@ use PDO;
 class Transaction extends Crud
 {
 
-    private PDO $DB ; 
-    protected int $id_transaction ;
-    protected $date ;
-    protected int $transaction_check ;
-    protected float $amount ;
-    protected string $description ;
+    private PDO $DB;
+    protected int $id_transaction;
+    protected $date;
+    protected int $transaction_check;
+    protected float $amount;
+    protected string $description;
 
 
     public function __construct()
     {
-        $this -> DB = Database::connexion() ;
+        $this->DB = Database::connexion();
     }
 
     /**
@@ -31,8 +32,8 @@ class Transaction extends Crud
     {
 
         //Todo : get transaction from database
-        
-        return [] ;
+
+        return [];
     }
 
     /**
@@ -44,16 +45,16 @@ class Transaction extends Crud
     {
 
         try {
-            $statement = $this -> DB -> prepare("SELECT * FROM transactions") ;
-            $statement -> execute() ;
-            $transactions = $statement -> fetchAll(PDO::FETCH_CLASS , self::class) ;
+            $statement = $this->DB->prepare("SELECT * FROM transactions");
+            $statement->execute();
+            $transactions = $statement->fetchAll(PDO::FETCH_CLASS, self::class);
 
-            return $transactions ;
+            return $transactions;
         } catch (\Throwable $th) {
             throw $th;
         }
 
-        return [] ;
+        return [];
     }
 
 
@@ -66,7 +67,7 @@ class Transaction extends Crud
     public function delete(int $id): bool
     {
         //TODO : delete transaction frome database
-        return true ;
+        return true;
     }
 
 
@@ -79,9 +80,9 @@ class Transaction extends Crud
      */
     public function update(int $id, array $data): bool
     {
-        return false ;
+        return false;
     }
-    
+
 
     /**
      * Create Databse into database
@@ -91,9 +92,28 @@ class Transaction extends Crud
      */
     public function create(array $data): bool
     {
-        //TODO  : add transaction into database
-        return false ;
+        if (\is_array($data)) {
+            //column1, column2, ....
+            $columns = implode(", ", array_keys($data));
+
+            // ?, ?, ...
+            $placeholders = implode(', ', array_fill(0, count($data), '?'));
+
+            //query 
+            $query = "INSERT INTO transactions ($columns) VALUES ($placeholders)";
+
+            //statment
+            $statement = $this->DB->prepare($query);
+
+            //execute statment 
+            if ($statement->execute(array_values($data))) {
+                return true;
+            }
+        }
+
+        return false;
     }
+
 
     /**
      * Get transactions 
@@ -106,35 +126,34 @@ class Transaction extends Crud
     {
 
         //TODO : get transaction with condition
-        return false ;
+        return false;
     }
 
 
     //! GETTERS AND SETTERS 
-    public function getInt() : int
+    public function getInt(): int
     {
-        return $this -> id_transaction ;
+        return $this->id_transaction;
     }
 
-    public function getDate() 
+    public function getDate()
     {
-        return $this -> date  ;
+        return $this->date;
     }
 
-    public function getCheck() : int
+    public function getCheck(): int
     {
-        return $this -> transaction_check ;
+        return $this->transaction_check;
     }
 
-    public function getDescription() : string
+    public function getDescription(): string
     {
-        return $this -> description ;
+        return $this->description;
     }
 
 
-    public function getAmount() : float
+    public function getAmount(): float
     {
-        return $this -> amount ;
+        return $this->amount;
     }
-
 }

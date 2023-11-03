@@ -1,12 +1,18 @@
 <div class="row">
+
     <div class="col-sm-12 col-lg-6 card">
         <div class="card-header">
             Create multible transactions from <strong>csv file</strong>
         </div>
         <div class="card-body">
-            <input class="form-control" type="file" id="formFile">
+            <!-- CREATE MULTIBLE TRANSACTIONS FROM CSV FIL  -->
+            <form action="/transactions/create" method="POST" enctype="multipart/form-data">
+                <input class="form-control" type="file" name="csv_transactions" id="formFile" accept=".csv">
+                <button type="submit" class="btn btn-primary mt-2 m-right">Save</button>
+            </form>
         </div>
     </div>
+
     <div class="col-sm-12 col-lg-6">
         <div class="card">
             <div class="card-header">
@@ -14,6 +20,7 @@
             </div>
             <div class="card-body">
 
+                <!-- CREAT NEW TRANSACTION FROM FORM-->
                 <form method="POST" action="/transactions/create">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Date</span>
