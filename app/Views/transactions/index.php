@@ -46,7 +46,7 @@ $i = 0;
                         </td>
 
                         <td>
-                            <?= $transaction->getAmount() ?>
+                            $ <?= $transaction->getAmount() ?>
                         </td>
                     </tr>
                 <?php endforeach ?>
