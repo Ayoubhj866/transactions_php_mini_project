@@ -7,7 +7,7 @@
         <div class="card-body">
             <!-- CREATE MULTIBLE TRANSACTIONS FROM CSV FIL  -->
             <form action="/transactions/create" method="POST" enctype="multipart/form-data">
-                <input class="form-control" type="file" name="csv_transactions" id="formFile" accept=".csv">
+                <input class="form-control" require type="file" name="csv_transactions" id="formFile" accept=".csv">
                 <button type="submit" class="btn btn-primary mt-2 m-right">Save</button>
             </form>
         </div>

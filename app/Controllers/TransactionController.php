@@ -44,25 +44,30 @@ class TransactionController
         $trans = new Transaction();
 
         if (isset($_FILES['csv_transactions'])) {
+
+            \dump($_FILES['csv_transactions']);
             $file = $_FILES['csv_transactions']['tmp_name'];
 
-            //csv handler
-            $transactions = CsvHelper::csvHandler($file);
-            $result = false;
-            $count = 0;
-
-            
-            if (\is_array($transactions)) {
-                foreach ($transactions as $transaction) {
-                    if($trans->create($transaction)) {
-                        $count++ ;
-                    }
-                    else {
-                        $count-- ;
+            if ($file !== "") {
+                //csv handler
+                $transactions = CsvHelper::csvHandler($file);
+                $result = false;
+                $count = 0;
+                if (\is_array($transactions)) {
+                    foreach ($transactions as $transaction) {
+                        if ($trans->create($transaction)) {
+                            $count++;
+                        } else {
+                            $count--;
+                        }
                     }
                 }
             }
-
+            else {
+                Alert::make("PLease select an valid csv file to save transactions", "error");
+                header("Location: /transactions/create");
+                die ;
+            }
             if ($count > 0) {
                 Alert::make("$count transactions are created succesfully ", "success");
                 header("Location: /transactions/create");
