@@ -5,6 +5,7 @@ use App\Helpers\CsvHelper;
 use App\Models\Transaction;
 use App\Models\User;
 
+//requirements
 require "../app/Core/Config.php";
 require "../routes/routes.php";
 
@@ -14,6 +15,8 @@ $dotenv->load();
 
 //! Match the routes
 $match = $router->match();
+
+
 
 //resolve route
 App::run($match);
