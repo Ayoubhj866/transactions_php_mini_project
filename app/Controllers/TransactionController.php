@@ -44,44 +44,87 @@ class TransactionController
         $trans = new Transaction();
 
         if (isset($_FILES['csv_transactions'])) {
+            //save transactions from csv file
+            self::storeFromeCsvFile($trans) ;
+        }
+        else if($_SERVER['REQUEST_METHOD'] === "POST") {
+            //store transaction from form
+            self::storeFromForm($trans , $_POST) ;
+            
+        }
+    }
 
-            \dump($_FILES['csv_transactions']);
-            $file = $_FILES['csv_transactions']['tmp_name'];
 
-            if ($file !== "") {
-                //csv handler
-                $transactions = CsvHelper::csvHandler($file);
-                $result = false;
-                $count = 0;
-                if (\is_array($transactions)) {
-                    foreach ($transactions as $transaction) {
-                        if ($trans->create($transaction)) {
-                            $count++;
-                        } else {
-                            $count--;
-                        }
+    /**
+     * Store transactions from csv file
+     *
+     * @param Transaction $trans
+     * @return Transaction
+     */
+    public static function storeFromeCsvFile(Transaction $trans) : Transaction
+    {
+        \dump($_FILES['csv_transactions']);
+        $file = $_FILES['csv_transactions']['tmp_name'];
+
+        if ($file !== "") {
+            //csv handler
+            $transactions = CsvHelper::csvHandler($file);
+            $result = false;
+            $count = 0;
+            if (\is_array($transactions)) {
+                foreach ($transactions as $transaction) {
+                    if ($trans->create($transaction)) {
+                        $count++;
+                    } else {
+                        $count--;
                     }
                 }
             }
+        }
+
+        
+        else {
+            Alert::make("PLease select an valid csv file to save transactions", "error");
+            header("Location: /transactions/create");
+            die ;
+        }
+        
+        if ($count > 0) {
+            Alert::make("$count transactions are created succesfully ", "success");
+            header("Location: /transactions/create");
+            die;
+        } else {
+            Alert::make("Transactions cannot stored ! ", "error");
+            header("Location: /transactions/create");
+            die;
+        }
+
+        //error 
+        Alert::make("Invalid csv file, or incopatible collumns of csv file", "error");
+        header("Location: /transactions/create");
+        die;
+    }
+
+    /**
+     * Save transaction from form
+     *
+     * @param Transaction $trans
+     * @return Transaction
+     */
+    public static function storeFromForm(Transaction $trans , array $data)
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if($trans->create($data)) {
+                Alert::make("Transaction created succesffuly" , "success") ;
+                \header("Location: /transactions");
+                die;
+            }
             else {
-                Alert::make("PLease select an valid csv file to save transactions", "error");
+                Alert::make("Transaction can't created succesffyly") ;
+                $_SESSION['registredData']= $data ;
                 header("Location: /transactions/create");
                 die ;
             }
-            if ($count > 0) {
-                Alert::make("$count transactions are created succesfully ", "success");
-                header("Location: /transactions/create");
-                die;
-            } else {
-                Alert::make("Transactions cannot stored ! ", "error");
-                header("Location: /transactions/create");
-                die;
-            }
-
-            //error 
-            Alert::make("Invalid csv file, or incopatible collumns of csv file", "error");
-            header("Location: /transactions/create");
-            die;
         }
     }
 }

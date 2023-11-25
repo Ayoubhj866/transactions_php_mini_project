@@ -1,3 +1,10 @@
+<?php
+if (isset($_SESSION['registredData'])) {
+    $registred_data = $_SESSION['registredData'];
+    dump($registred_data);
+}
+?>
+
 <div class="row">
 
     <div class="col-sm-12 col-lg-6 card">
@@ -29,7 +36,7 @@
 
                     <div class=" input-group mb-3">
                         <span class="input-group-text">Check</span>
-                        <input required type="text" class="form-control" name="check">
+                        <input required type="text" class="form-control" name="transaction_check">
                     </div>
 
                     <div class=" input-group mb-3">

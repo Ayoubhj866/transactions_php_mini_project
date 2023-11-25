@@ -16,9 +16,8 @@ $dotenv->load();
 //! Match the routes
 $match = $router->match();
 
-
-
 //resolve route
 App::run($match);
 
 dump($_SERVER['REQUEST_URI']) ;
+
