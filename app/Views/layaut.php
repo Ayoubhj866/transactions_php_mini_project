@@ -98,13 +98,13 @@
             $crumb_links = "";
             $link = null;
 
-            foreach ($crumbs as $crumb) {
-                if (!empty($crumb)) {
-                    $link = $link . '/' . $crumb;
-                    $display = ucwords(str_replace(array('-', '_'), ' ', $crumb));
-                    $crumb_links .= '<li><a href="' . $link . '">' . $display . '</a></li>';
-                }
-            }
+            // foreach ($crumbs as $crumb) {
+            //     if (!empty($crumb)) {
+            //         $link = $link . '/' . $crumb;
+            //         $display = ucwords(str_replace(array('-', '_'), ' ', $crumb));
+            //         $crumb_links .= '<li><a href="' . $link . '">' . $display . '</a></li>';
+            //     }
+            // }
             ?>
 
             <nav aria-label="breadcrumb">

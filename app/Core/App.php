@@ -34,9 +34,11 @@ class App
     {
         $withLayaut = false;
 
+        
+
         if ($match) {
 
-            //SAVE THE CURRENT ROUTE (WILL BE USEFUL IF THE NEXT ROUTE NOTE FOUND or USER NOT OUTORITEZ TO VISIT PAGE WE WILL USE THIS TO GO BACK)
+            //SAVE THE CURRENT ROUTE (WILL BE USEFUL IF THE NEXT ROUTE NOTE FOUND or USER DONT HAS THE AUTORISATION TO VISIT PAGE WE WILL USE THIS TO GO BACK)
             $_SESSION['back'] = $_SERVER["REQUEST_URI"];
 
             list($class, $methode, $withLayaut) = $match['target'];
@@ -56,6 +58,7 @@ class App
                 die;
             }
         } else {
+            //if page not found
             ob_start();
             require  VIEWS_PATH . DIRECTORY_SEPARATOR . "errors" . DIRECTORY_SEPARATOR . "404.php";
             $pageContent = ob_get_clean();
@@ -64,7 +67,7 @@ class App
         //! Current user (the user is connected currently )
         $currentUser = AuthController::getCurrentUser();
 
-        //set view in layaut
+        //set the view in layaut
         if ($withLayaut !== false) {
             require VIEWS_PATH . "layaut.php";
             die;

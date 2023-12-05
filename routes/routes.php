@@ -26,7 +26,9 @@ $router->map("GET" , "/logout" , [AuthController::class, "logout" , true ] ,  "l
 $router->map("GET", "/", [HomeController::class, "index" , true], "homePage");
 
 //users routes
-$router -> map("GET" , "/users" , [UserController::class , "index" , true] , "usersPage") ;
+$router -> map("GET" , "/users" , [UserController::class , "index" , true] , "usersPage")  ;
+$router -> map("GET" , "/users/delete/{a:id}" , [UserController::class , "delete" , true] , "deleteUser") ;
+$router -> map("GET" , "/users/[*:id]/edit" , [UserController::class , "edit" , true] , "editUser") ;
 
 //transactions routes
 $router -> map('GET' , "/transactions" , [TransactionController::class , "index" , true] , "transactionsPage");

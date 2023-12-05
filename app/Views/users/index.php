@@ -53,7 +53,7 @@ $i = 0; ?>
                     </td>
 
                     <td class="d-flex gap-4 text-center">
-                        <a href="/users/edit/<?= base64_encode($user->getId()) ?>" class="text-success">
+                        <a href="/users/<?= base64_encode($user->getId()) ?>/edit" class="text-success">
                             <i class="ph-bold ph-pencil"></i>
                             <a href="/users/delete/<?= base64_encode($user->getId()) ?>" class="text-danger">
                                 <i class="ph-bold ph-trash"></i>
