@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Core\Alert;
 use App\Core\View;
+use App\Helpers\Validation;
 use App\Models\User;
+use Dotenv\Validator;
 
 class UserController
 {
@@ -73,6 +75,11 @@ class UserController
         die ;
     }
 
+    /**
+     * Get create new user page
+     *
+     * @return void
+     */
     public function create() {
 
         //user connected
@@ -91,4 +98,31 @@ class UserController
         //return create page
         return View::make("users/create") ;
     }
+
+    public function store() {
+
+        if($_SERVER['REQUEST_METHOD'] === "POST") 
+        {
+            if(!empty($errors = Validation::isValidRegistrationData($_POST))) 
+            {
+                Alert::make($errors , "error");
+                $_SESSION['invalideData'] = $_POST;
+                header("Location: /users/create") ;
+                die ;
+            }
+            $data = ["username" => $_POST['username'] , "role" => $_POST['role'] , "email" => $_POST['email'] , "password" => password_hash($_POST['password'] , \PASSWORD_DEFAULT)] ;
+            if((new User)->create($data)) 
+            {
+                Alert::make("User has created successfuly !" , "success") ;
+                \header("Location: /users") ;
+                die ;
+            }
+            Alert::make("User not created try again !" , "danger") ;
+            \header("Location: /users") ;
+            die ;
+        }
+    }
+
+    
 }
+

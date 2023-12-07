@@ -43,3 +43,6 @@ $router -> map("POST" , "/register" , [AuthController::class , "register" , true
 
 //transactions
 $router -> map("POST" , "/transactions/create" , [TransactionController::class , "store"  , true ] , "createTransactions") ;
+
+//users
+$router -> map("POST" , "/users/create" , [UserController::class , "store" , true] , "storeUser") ;
