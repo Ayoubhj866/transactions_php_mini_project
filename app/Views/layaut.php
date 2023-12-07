@@ -31,21 +31,21 @@
 
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a href="/" class="nav-link text-secondary">
+                            <a href="/" class="nav-link <?= $match['name'] === "home" ? "text-white" : "text-secondary" ?>">
                                 <i class="ph-bold ph-house"></i>
                                 Home
                             </a>
                         </li>
 
                         <li>
-                            <a href="/transactions" class="nav-link text-secondary link-active">
+                            <a href="/transactions" class="nav-link <?= $match['name'] === "transactions" ? "text-white" : "text-secondary" ?>">
                                 <i class="ph-bold ph-hand-coins"></i>
                                 Transactions
                             </a>
                         </li>
 
                         <li>
-                            <a href="/users" class="nav-link text-secondary">
+                            <a href="/users" class="nav-link  <?= $match['name'] === "users" ? "text-white" : "text-secondary" ?>">
                                 <i class="ph-bold ph-user"></i>
                                 Users
                             </a>
@@ -109,7 +109,7 @@
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item "><a href="/">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <?php echo $crumb_links; ?>
                     </li>

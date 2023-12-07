@@ -23,15 +23,16 @@ $router->map("GET" , "/register" , [AuthController::class, "registerPage" , true
 $router->map("GET" , "/logout" , [AuthController::class, "logout" , true ] ,  "logout");
 
 //home routes
-$router->map("GET", "/", [HomeController::class, "index" , true], "homePage");
+$router->map("GET", "/", [HomeController::class, "index" , true], "home");
 
 //users routes
-$router -> map("GET" , "/users" , [UserController::class , "index" , true] , "usersPage")  ;
-$router -> map("GET" , "/users/delete/{a:id}" , [UserController::class , "delete" , true] , "deleteUser") ;
+$router -> map("GET" , "/users" , [UserController::class , "index" , true] , "users")  ;
 $router -> map("GET" , "/users/[*:id]/edit" , [UserController::class , "edit" , true] , "editUser") ;
+$router -> map("GET" , "/users/[*:id]/delete" , [UserController::class , "delete" , true] , "deleteUser") ;
+$router -> map("GET" , "/users/create" , [UserController::class , "create" , true] , "createUser") ;
 
 //transactions routes
-$router -> map('GET' , "/transactions" , [TransactionController::class , "index" , true] , "transactionsPage");
+$router -> map('GET' , "/transactions" , [TransactionController::class , "index" , true] , "transactions");
 $router -> map('GET' , "/transactions/create" , [TransactionController::class , "create" , true] , "createTransaction");
 
 //! POST Routes

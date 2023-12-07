@@ -43,12 +43,52 @@ class UserController
     public function edit(array $params)
     {
         if ($id = \base64_decode($params["id"])) {
-            if($user = (new User) -> where("id_user" , (int)$id)) {
-                return View::make("users/edit" , $user) ;
+            if ($user = (new User)->where("id_user", (int)$id)) {
+                return View::make("users/edit", $user);
             }
         }
-        Alert::make("User not found !" , "error") ;
-        header("/users") ;
+        Alert::make("User not found !", "error");
+        header("/users");
+        die;
+    }
+
+    /**
+     * Delete User 
+     *
+     * @param array $params
+     * @return void
+     */
+    public function delete(array $params)
+    {
+        //bool => true if user deleted false if else
+        $delet = (new User)->delete((int) \base64_decode($params['id']));
+
+        if ($delet) {
+            Alert::make("User deleted succesfully !", "success");
+            \header("Location: /users") ;
+            die ;
+        }
+        Alert::make("We can't delete user, try again !", "error");
+        \header("Location: /users") ;
         die ;
+    }
+
+    public function create() {
+
+        //user connected
+        $user = AuthController::getCurrentUser();
+
+        if ($user === false) {
+            Alert::make("You have to log in !", "error");
+            header("Location: /login");
+            die;
+        } else if ($user->getRole() !== 'admin') {
+            Alert::make("Only admins can visite this page", "error");
+            header("Location: /");
+            die;
+        }
+
+        //return create page
+        return View::make("users/create") ;
     }
 }

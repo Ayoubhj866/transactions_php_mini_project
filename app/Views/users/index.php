@@ -9,7 +9,7 @@ $i = 0; ?>
     <h3 class="text-muted">Users list</h3>
     <div class="btn-container">
         <a href="/users/create" title="Add user" class="btn btn-sm btn-outline-primary">
-          <i class="ph-bold ph-plus"></i>  Add user
+            <i class="ph-bold ph-plus"></i> Add user
         </a>
     </div>
 </div>
@@ -36,7 +36,8 @@ $i = 0; ?>
                         <?= ++$i ?>
                     </td>
                     <td class="d-flex justify-content-between">
-                        <?= $user->getUsername() ?> <?= AuthController::getCurrentUser()->getId() === $user->getId() ? "<small class='text-muted'>Current</small>" : null ?>
+                        <?= $user->getUsername() ?> 
+                        <?= AuthController::getCurrentUser()->getId() === $user->getId() ? "<small class='text-muted'>Current</small>" : null ?>
                     </td>
 
                     <td>
@@ -52,12 +53,21 @@ $i = 0; ?>
                         <span class="status <?= $statusColor ?>"></span>
                     </td>
 
-                    <td class="d-flex gap-4 text-center">
-                        <a href="/users/<?= base64_encode($user->getId()) ?>/edit" class="text-success">
-                            <i class="ph-bold ph-pencil"></i>
-                            <a href="/users/delete/<?= base64_encode($user->getId()) ?>" class="text-danger">
-                                <i class="ph-bold ph-trash"></i>
-                            </a>
+                    <td class="d-flex gap-4 text-center" disabled>
+                        <?php if (AuthController::getCurrentUser()->getId() !== $user->getId()) :  ?>
+                            <a href="/users/<?= base64_encode($user->getId()) ?>/edit" class="text-success">
+                                <i class="ph-bold ph-pencil"></i>
+                                <a style=";" href="/users/<?= base64_encode($user->getId()) ?>/delete" class="text-danger">
+                                    <i class="ph-bold ph-trash"></i>
+                                </a>
+                            <?php else : ?>
+                                <a style=";" href="/users/<?= base64_encode($user->getId()) ?>/edit" class="text-success">
+                                    <i class="ph-bold ph-pencil"></i>
+                                </a>
+                                <button style="cursor: pointer;" class="btn btn-sm btn-light" disabled>
+                                    <i class="ph-bold ph-trash"></i>
+                                </button>
+                            <?php endif ?>
                     </td>
                 </tr>
             <?php endforeach ?>

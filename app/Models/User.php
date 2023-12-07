@@ -124,7 +124,15 @@ class User extends Crud
      */
     public function delete(int $id): bool
     {
-        return true;
+        if(self::where('id_user' , (int)$id) !== false) {
+            //delete this user
+            $query = "DELETE FROM users WHERE id_user=?" ;
+            $statement = $this->DB->prepare($query) ;
+            if($statement->execute([$id])) {
+                return true ;
+            }
+        }
+        return false;
     }
 
 
