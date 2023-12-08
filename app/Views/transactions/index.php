@@ -23,6 +23,7 @@ $i = 0;
                 <th>Check</th>
                 <th>Description</th>
                 <th>Amount</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -48,6 +49,14 @@ $i = 0;
                         <td>
                             $ <?= $transaction->getAmount() ?>
                         </td>
+                        <td class="d-flex gap-4 text-center" disabled>
+                            <a href="/transactions/<?= base64_encode(base64_encode($transaction->getId())) ?>/edit" class="text-success">
+                                <i class="ph-bold ph-pencil"></i>
+                            </a>
+                            <a style=";" href="/transactions/<?= base64_encode(base64_encode($transaction->getId())) ?>/delete" class="text-danger">
+                                <i class="ph-bold ph-trash"></i>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
 
@@ -58,6 +67,7 @@ $i = 0;
                     </td>
                 </tr>
             <?php endif ?>
+
         </tbody>
     </table>
 </div>

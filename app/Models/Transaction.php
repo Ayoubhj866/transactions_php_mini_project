@@ -131,7 +131,7 @@ class Transaction extends Crud
 
 
     //! GETTERS AND SETTERS 
-    public function getInt(): int
+    public function getId(): int
     {
         return $this->id_transaction;
     }
