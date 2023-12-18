@@ -28,7 +28,7 @@ class UserController
             header("Location: /login");
             die;
         } else if ($user->getRole() !== 'admin') {
-            Alert::make("Only admins can visite this page", "error");
+            Alert::make("Only admins can visite this page", "info");
             header("Location: /");
             die;
         }
@@ -105,8 +105,8 @@ class UserController
         {
             if(!empty($errors = Validation::isValidRegistrationData($_POST))) 
             {
-                Alert::make($errors , "error");
-                $_SESSION['invalideData'] = $_POST;
+                Alert::make($errors , "error") ;
+                $_SESSION['invalideData'] = $_POST ;
                 header("Location: /users/create") ;
                 die ;
             }
@@ -114,7 +114,7 @@ class UserController
             if((new User)->create($data)) 
             {
                 Alert::make("User has created successfuly !" , "success") ;
-                \header("Location: /users") ;
+                header("Location: /users") ;
                 die ;
             }
             Alert::make("User not created try again !" , "danger") ;

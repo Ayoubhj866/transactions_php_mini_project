@@ -9,7 +9,7 @@ require "../vendor/autoload.php";
 $router = new AltoRouter();
 
 /**
- * /loogin : the route
+ * /login : how to write an route
  * [AuthController::class, "login" ,  true ] : [ COntroller, the methode will be executed ,  the view will be display inside the layaut or no (true if yes)]
  * "loginPage"  : the route name
  * $router->map("GET" , "/login" , [AuthController::class, "login" ,  true ] , "loginPage" );

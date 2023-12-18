@@ -21,6 +21,20 @@ class TransactionController
         //get all transaction
         $transaction = (new Transaction)->readAll();
 
+        //get the user is currently connected
+        $currectUser = AuthController::getCurrentUser() ;
+
+        if($currectUser == false) {
+            Alert::make("You have to log in !" , "errors") ;
+            \header("Location: /login");
+            die ;
+        }elseif($currectUser->getRole() !== "admin") {
+            Alert::make("Only admins can visite this page" , "info") ;
+            header("Location: /") ;
+            die ;
+        }
+
+
         return View::make("transactions/index", $transaction);
     }
 

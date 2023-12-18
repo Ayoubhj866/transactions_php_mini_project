@@ -1,4 +1,7 @@
 <?php
+use App\Controllers\AuthController;
+
+//get the user is currently connected
 $i = 0;
 ?>
 

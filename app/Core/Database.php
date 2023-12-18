@@ -1,9 +1,6 @@
 <?php 
-
-
 namespace App\Core ;
-
-use PDO;
+use PDO ;
 
 class Database
 {
