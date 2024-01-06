@@ -54,6 +54,15 @@ class UserController
         die;
     }
 
+    public function update()
+    {
+        // if($_SERVER['REQUIST_METHOD'] === "POST") {
+        //     \dump($_POST) ;
+        // }
+
+        
+    }
+
     /**
      * Delete User 
      *

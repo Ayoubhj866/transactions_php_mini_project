@@ -11,7 +11,7 @@ if (isset($data)) {
             Edit user
         </div>
         <div class="card-body">
-            <form method="POST" action="/transactions/create">
+            <form method="POST" action="/users/edit">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Username</span>
                     <input type="text" class="form-control" name="username" value="<?= $user !== null ? htmlentities($user -> getUsername()) : null ?>">

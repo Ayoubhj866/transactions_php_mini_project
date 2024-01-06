@@ -46,3 +46,4 @@ $router -> map("POST" , "/transactions/create" , [TransactionController::class ,
 
 //users
 $router -> map("POST" , "/users/create" , [UserController::class , "store" , true] , "storeUser") ;
+$router -> map("POST" , "/users/edit" , [UserController::class , "update" , true] , "updateUser") ;
